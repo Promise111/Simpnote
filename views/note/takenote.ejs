@@ -1,0 +1,35 @@
+<%- include("../partials/header") %>
+    <title><%= title %></title>
+  </head>
+  <body>
+        <%- include("../partials/navbar")%>
+    <div class="container">
+      <div class="row">
+        <h1 class="text-center">Take Note</h1>
+        </div>
+        
+        <% if (error) { %>
+            <p class="text-center text-danger"><%= error %></p>
+        <% } %>
+        <div class="row justify-content-center">
+          <form action="/simpnotes/takenote" method="Post" class="col-xm-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="mb-3">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" name="subject" class="form-control" value="<%= body.subject ? body.subject : '' %>" id="subject" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3">
+              <label for="body" class="form-label">Body</label>
+              <textarea class="form-control" name="body" id="body" cols="30" rows="10" required><%= body.body ? body.body : '' %></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="category" class="form-label">Category</label>
+              <input type="text" name="category" class="form-control" id="category" value="<%= body.subject ? body.category : '' %>" aria-describedby="emailHelp" required>
+            </div>
+            <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+    </div>
+
+ <%- include("../partials/footer") %>
