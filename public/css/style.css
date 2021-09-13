@@ -31,12 +31,12 @@ body {
 }
 
 .simpnotes {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 16vw;
   margin-top: 25vw;
 }
 
-.index-button-right{
+.index-button-right {
   background-color: #0d6dfdd7;
   width: auto;
   height: 7vh;
@@ -44,7 +44,7 @@ body {
   font-size: 20px;
 }
 
-.index-button-left{
+.index-button-left {
   background-color: #0d6dfd0e;
   width: auto;
   height: 7vh;
@@ -61,21 +61,33 @@ body {
   margin-top: 10vh;
 }
 
-.btn-edit{
+.btn-edit {
   margin-right: 10px;
 }
 
-.note-wrapper{
-  border: 1px solid rgba(0,0,0,.08);
+.note-wrapper {
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 5px;
   padding: 5px;
 }
 
-.date{
+.date {
   color: #999;
-  font-size:smaller;
+  font-size: smaller;
 }
 
-nav{
+nav {
   padding-right: 70px !important;
+}
+
+#_404 {
+  font-weight: 900;
+  font-size: larger;
+  font-size: 5vh;
+}
+
+#PNF {
+  font-weight: 900;
+  font-size: larger;
+  font-size: 7vh;
 }

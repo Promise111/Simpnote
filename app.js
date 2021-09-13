@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
+const helmet = require("helmet");
 const noteRoutes = require("./router/noteRoutes");
 const authRoutes = require("./router/authRoutes");
 const cookieParser = require("cookie-parser");
@@ -12,6 +13,7 @@ mongoose
   .then(() => console.log("Connnected to database..."))
   .catch((err) => console.log(err.message));
 
+app.use(helmet());
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(cookieParser());
@@ -21,5 +23,13 @@ app.use(express.json());
 
 app.use("/Simpnotes", noteRoutes);
 app.use("/Simpnotes", authRoutes);
+
+app.use("", (req, res) => {
+  return res.status(404).render("./404/404", {
+    title: "404 | Page Not Found",
+    user: "",
+    path: "404",
+  });
+});
 
 app.listen(port, () => console.log(`Listening on port: ${port}`));

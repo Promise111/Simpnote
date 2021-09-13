@@ -27,10 +27,10 @@ exports.takeNote = async (req, res) => {
 };
 
 exports.home = async (req, res) => {
-  console.log(req.user, "hi");
-  // if (req.user) {
-  //   return res.redirect("/simpnotes/mynotes");
-  // }
+  console.log(req.cookies.jwt, "hi");
+  if (req.cookies.jwt) {
+    return res.redirect("/simpnotes/mynotes");
+  }
   return res.status(200).render("./note/index", {
     title: "Simpnotes | Home",
     date: new Date().toLocaleTimeString(),
