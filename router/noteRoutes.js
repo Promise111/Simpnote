@@ -7,19 +7,20 @@ const {
   editNote,
   deleteNote,
 } = require("../controller/noteController");
+const authMiddleware = require("../middlewares/auth");
 
 router.get("/", home);
 
-router.get("/takenote", takeNote);
+router.get("/takenote", authMiddleware, takeNote);
 
-router.post("/takenote", takeNote);
+router.post("/takenote", authMiddleware, takeNote);
 
-router.get("/edit/:id", editNote);
+router.get("/edit/:id", authMiddleware, editNote);
 
-router.post("/edit/:id", editNote);
+router.post("/edit/:id", authMiddleware, editNote);
 
-router.get("/mynotes", notes);
+router.get("/mynotes", authMiddleware, notes);
 
-router.post("/delete/:id", deleteNote);
+router.post("/delete/:id", authMiddleware, deleteNote);
 
 module.exports = router;

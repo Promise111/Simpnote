@@ -8,9 +8,9 @@
         <h1 class="text-center">Sign In</h1>
       </div>
         <div class="row d-flex justify-content-center">
-          <% if (validationError) {%>
+          <% if (validationError || accessError) {%>
           <div>
-            <p class="text-danger text-center"><%= validationError %></p>
+            <p class="text-danger text-center"><%= validationError ? validationError : accessError ? accessError : '' %></p>
           </div>
           <% } %>
           <form action="/simpnotes/login" method="POST" class="col-xm-12 col-sm-12 col-md-6 col-lg-6">

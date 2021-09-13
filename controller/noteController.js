@@ -1,16 +1,18 @@
 const { validator, noteModel } = require("../model/note");
+const { verifyToken } = require("../model/user");
 const _ = require("../utils/loadash");
 
 exports.takeNote = async (req, res) => {
   var body = req.body;
+  let user = req.user;
   let { error } = validator(body);
 
   if (req.method === "POST") {
     if (!error) {
-      body.user = "612a768f072b9923191b4a1f";
+      body.user = req.user._id;
       const note = new noteModel(body);
       note.save();
-      res.redirect("/simpnotes/mynotes");
+      return res.redirect("/simpnotes/mynotes");
     }
   }
 
@@ -20,19 +22,26 @@ exports.takeNote = async (req, res) => {
     date: new Date().toLocaleTimeString(),
     path: "takenote",
     body: body,
+    user: user ? user : "",
   });
 };
 
 exports.home = async (req, res) => {
+  console.log(req.user, "hi");
+  // if (req.user) {
+  //   return res.redirect("/simpnotes/mynotes");
+  // }
   return res.status(200).render("./note/index", {
     title: "Simpnotes | Home",
     date: new Date().toLocaleTimeString(),
     path: "home",
+    user: "",
   });
 };
 
 exports.editNote = async (req, res) => {
   var body = req.body;
+  let user = req.user;
   let { error } = validator(body);
 
   const note = await noteModel
@@ -58,18 +67,22 @@ exports.editNote = async (req, res) => {
     error: error && req.method === "POST" ? error.details[0].message : "",
     path: "editnote",
     body: _.isEmpty(body) ? note : body,
+    user: user ? user : "",
   });
 };
 
 exports.notes = async (req, res) => {
+  const decoded = verifyToken(req.cookies.jwt);
+  const user = req.user;
   const notes = await noteModel
-    .find()
+    .find({ user: user._id })
     .sort("title")
     .select("subject category body createdAt");
   return res.render("./note/mynotes", {
     title: "Simpnotes | My Notes",
     notes: notes,
     path: "notes",
+    user: user ? user : "",
   });
 };
 

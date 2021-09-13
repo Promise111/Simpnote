@@ -8,9 +8,9 @@
           <h1 class="text-center">Register</h1>
           </div>
           <div class="row justify-content-center">
-            <% if (validationError) {%>
+            <% if (validationError || accessError) {%>
             <div>
-              <p class="text-danger text-center"><%= validationError %></p>
+              <p class="text-danger text-center"><%= validationError ? validationError : accessError ? accessError : '' %></p>
             </div>
             <% } %>
             <form action="/simpnotes/register" method="POST" class="col-xm-12 col-sm-12 col-md-6 col-lg-6">
@@ -19,30 +19,30 @@
 
               <div class="mb-3 col-sm-12 col-md-6 col-lg-6">
                 <label for="lastname" class="form-label">Last name</label>
-                <input type="text" name="lastname" class="form-control" id="lastname" required>
+                <input type="text" name="lastname" class="form-control" value="<%= body.lastname %>" id="lastname" required>
               </div>
 
               <div class="mb-3 col-sm-12 col-md-6 col-lg-6 ml-2">
                 <label for="firstname" class="form-label">First name</label>
-                <input type="text" name="firstname" class="form-control" id="firstname" required>
+                <input type="text" name="firstname" class="form-control" value="<%= body.firstname %>" id="firstname" required>
               </div>
 
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                <input type="email" name="email" class="form-control" value="<%= body.email %>" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+                <input type="password" name="password" class="form-control" value="<%= body.password %>" id="exampleInputPassword1" required>
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" id="exampleInputPassword1" required>
+                <input type="password" name="confirm_password" class="form-control" value="<%= body.confirm_password %>" id="exampleInputPassword1" required>
               </div>
 
               <div class="d-flex justify-content-center">
