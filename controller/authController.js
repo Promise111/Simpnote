@@ -26,7 +26,7 @@ exports.login = async (req, res) => {
     }
   }
 
-  return res.status(200).render("./auth/Login", {
+  return res.status(200).render("./auth/login", {
     title: "Simpnotes | Sign In",
     date: new Date().toLocaleTimeString(),
     path: "login",
