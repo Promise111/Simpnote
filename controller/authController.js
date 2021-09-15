@@ -11,10 +11,8 @@ exports.login = async (req, res) => {
   const body = req.body;
   const { error } = loginValidator(body);
   let accessError;
-  console.log(body,error);
 
   if (req.method === "POST" && !error) {
-  console.log("Post");
     const user = await userModel.findOne({ email: body.email });
     if (!user) accessError = "Invalid Email and Password";
     if (user) {

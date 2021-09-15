@@ -27,7 +27,6 @@ exports.takeNote = async (req, res) => {
 };
 
 exports.home = async (req, res) => {
-  console.log(req.cookies.jwt, "hi");
   if (req.cookies.jwt) {
     return res.redirect("/mynotes");
   }
