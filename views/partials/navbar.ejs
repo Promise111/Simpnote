@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <!-- <a class="navbar-brand" href="/simpnotes">Simpnotes</a> -->
-    <% if (!user) {%>
+    <a class="navbar-brand" href="/simpnotes">Simpnotes</a>
+    <!-- <% if (!user) {%>
       <a class="navbar-brand" href="/simpnotes">Simpnotes</a>
     <%}%>
     <% if (user) {%>
         <a class="navbar-brand" href="/simpnotes/mynotes">Simpnotes</a>
-      <%}%>
+      <%}%> -->
     <button
       class="navbar-toggler"
       type="button"
@@ -20,13 +20,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li> -->
+        <li class="nav-item">
+          <a class="nav-link active" id="alert" aria-current="page" href="#">Home</a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
-        </li> -->
-        <!-- <li class="nav-item">
+        </li>
+        <li class="nav-item">
           <a
             class="nav-link disabled"
             href="#"
@@ -55,10 +55,13 @@
             <%= user.firstname %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li onclick="document.getElementById('logout').submit()"><a class="dropdown-item">
-              <form id="logout" action="/simpnotes/logout" method="post">
-              Sign Out
-              </form></a></li>
+            <li>
+              <a class="dropdown-item">
+                <form id="logout" id="logout" action="/simpnotes/logout" method="post">
+                  Sign Out
+                </form>
+              </a>
+            </li>
             <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider" /></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li> -->
