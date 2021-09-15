@@ -5,7 +5,6 @@ const {
   hash,
   verify,
 } = require("../model/user");
-const crypto = require("crypto");
 const _ = require("../utils/loadash");
 
 exports.login = async (req, res) => {
