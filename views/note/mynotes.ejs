@@ -10,7 +10,7 @@
 
           <div class="col-md-12">
             <div class="d-flex align-items-end justify-content-end">
-              <a class="float-right" href="/simpnotes/takenote" ><button class="btn btn-primary">New Note</button></a>
+              <a class="float-right" href="/takenote" ><button class="btn btn-primary">New Note</button></a>
             </div>
           </div>
 
@@ -32,12 +32,12 @@
                         <h4><%=note.subject%></h4>
                       </div>
                       <div class="col-md-6 d-flex justify-content-end">
-                        <a href="/simpnotes/edit/<%=note._id%>"><button class="btn btn-primary btn-edit">
+                        <a href="/edit/<%=note._id%>"><button class="btn btn-primary btn-edit">
                           Edit
                         </button>
                         </a>
-                            <form action="/simpnotes/delete/<%= note._id %>" method="post">
-                              <button class="btn btn-danger" onclick="return confirm(`Are you sure you want to delete?`)">Delete</button>
+                            <form action="/delete/<%= note._id %>" method="post">
+                              <button id="deleteNote" class="btn btn-danger">Delete</button>
                             </form>
                       </div>
                       <div>

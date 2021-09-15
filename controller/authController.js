@@ -12,8 +12,10 @@ exports.login = async (req, res) => {
   const body = req.body;
   const { error } = loginValidator(body);
   let accessError;
+  console.log(body,error);
 
   if (req.method === "POST" && !error) {
+  console.log("Post");
     const user = await userModel.findOne({ email: body.email });
     if (!user) accessError = "Invalid Email and Password";
     if (user) {
@@ -22,7 +24,7 @@ exports.login = async (req, res) => {
       if (user && isPasswordValid) {
         const token = user.generateAuthToken();
         res.cookie("jwt", token, { secure: false, httpOnly: true });
-        return res.redirect("/simpnotes/mynotes");
+        return res.redirect("/mynotes");
       }
     }
   }
@@ -54,7 +56,7 @@ exports.register = async (req, res) => {
       await user.save();
       const token = user.generateAuthToken();
       res.cookie("jwt", token, { secure: false, httpOnly: true });
-      return res.redirect("/Simpnotes/mynotes");
+      return res.redirect("/mynotes");
     }
   }
   return res.status(200).render("./auth/register", {
@@ -69,5 +71,5 @@ exports.register = async (req, res) => {
 
 exports.logout = async(req, res) => {
   res.clearCookie("jwt");
-  return res.redirect("/simpnotes/login");
+  return res.redirect("/login");
 }

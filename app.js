@@ -21,8 +21,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/Simpnotes", noteRoutes);
-app.use("/Simpnotes", authRoutes);
+app.use("/", noteRoutes);
+app.use("/", authRoutes);
 
 app.use("", (req, res) => {
   return res.status(404).render("./404/404", {

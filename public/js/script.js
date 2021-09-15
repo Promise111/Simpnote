@@ -1,3 +1,11 @@
 const logoutForm = document.getElementById("logout");
-logoutForm.addEventListener("click", () => logoutForm.submit());
-document.getElementById("alert").addEventListener("click", () => alert());
+// const homeAlert = document.getElementById("homeAlert");
+const deleteNote = document.getElementById("deleteNote");
+logoutForm
+  ? logoutForm.addEventListener("click", () => logoutForm.submit())
+  : null;
+// homeAlert.addEventListener("click", () => alert('Hello'));
+deleteNote.addEventListener("click", function () {
+  return confirm(`Are you sure you want to delete?`);
+}
+);

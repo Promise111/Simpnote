@@ -13,7 +13,7 @@
             <p class="text-danger text-center"><%= validationError ? validationError : accessError ? accessError : '' %></p>
           </div>
           <% } %>
-          <form action="/simpnotes/login" method="POST" class="col-xm-12 col-sm-12 col-md-6 col-lg-6">
+          <form action="/login" method="POST" class="col-xm-12 col-sm-12 col-md-6 col-lg-6">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
               <input type="email" name="email" class="form-control" value="<%= body.email %>" id="exampleInputEmail1" aria-describedby="emailHelp" required>

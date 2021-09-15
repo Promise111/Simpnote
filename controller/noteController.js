@@ -12,7 +12,7 @@ exports.takeNote = async (req, res) => {
       body.user = req.user._id;
       const note = new noteModel(body);
       note.save();
-      return res.redirect("/simpnotes/mynotes");
+      return res.redirect("/mynotes");
     }
   }
 
@@ -29,7 +29,7 @@ exports.takeNote = async (req, res) => {
 exports.home = async (req, res) => {
   console.log(req.cookies.jwt, "hi");
   if (req.cookies.jwt) {
-    return res.redirect("/simpnotes/mynotes");
+    return res.redirect("/mynotes");
   }
   return res.status(200).render("./note/index", {
     title: "Simpnotes | Home",
@@ -59,7 +59,7 @@ exports.editNote = async (req, res) => {
     note.category = body.category;
     note.updatedAt = new Date().toISOString();
     await note.save();
-    return res.redirect("/simpnotes/mynotes");
+    return res.redirect("/mynotes");
   }
 
   return res.render("./note/editnote", {
@@ -88,5 +88,5 @@ exports.notes = async (req, res) => {
 
 exports.deleteNote = async (req, res) => {
   const note = await noteModel.findByIdAndDelete(req.params.id);
-  return res.redirect("/simpnotes/mynotes");
+  return res.redirect("/mynotes");
 };
