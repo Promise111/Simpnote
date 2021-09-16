@@ -1,3 +1,4 @@
 {
-    "jwtPrivateKey": "notePrivateKey"
+    "jwtPrivateKey": "notePrivateKey",
+    "mongoPassword": "atlasPassword"
 }
