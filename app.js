@@ -8,15 +8,15 @@ const noteRoutes = require("./router/noteRoutes");
 const authRoutes = require("./router/authRoutes");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
-// mongoose
-//   .connect("mongodb://127.0.0.1:27017/simpnotes")
-//   .then(() => console.log("Connnected to database..."))
-//   .catch((err) => console.log(err.message));
-
 mongoose
-  .connect(`mongodb+srv://Promise:${config.get("mongoPassword")}@cluster0.sx5qn.mongodb.net/simpnotes`)
+  .connect("mongodb://127.0.0.1:27017/simpnotes")
   .then(() => console.log("Connnected to database..."))
-  .catch((err) => console.log(err.message, "database connection failed"));
+  .catch((err) => console.log(err.message));
+
+// mongoose
+//   .connect(`mongodb+srv://Promise:${config.get("mongoPassword")}@cluster0.sx5qn.mongodb.net/simpnotes`)
+//   .then(() => console.log("Connnected to database..."))
+//   .catch((err) => console.log(err.message, "database connection failed"));
 
 app.use(helmet());
 app.set("view engine", "ejs");
