@@ -48,7 +48,7 @@ userSchema.methods.generateAuthToken = function () {
       lastname: this.lastname,
       email: this.email,
     },
-    config.get("jwtPrivateKey")
+    process.env.jwtPrivateKey
   );
 };
 
@@ -98,7 +98,7 @@ exports.verify = async (password, hash) => {
 exports.verifyToken = (token) => {
   let decoded;
   try {
-    decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+    decoded = jwt.verify(token, process.env.jwtPrivateKey);
   } catch (ex) {
     decoded = ex.message;
   }
